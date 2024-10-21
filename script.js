@@ -3,6 +3,11 @@
 function Player(name, marker) {
   this.name = name;
   this.marker = marker;
+  this.move = function (x, y) {
+    console.clear();
+    Gameboard[x][y] = marker;
+    console.log(Gameboard);
+  };
 }
 const playerOne = new Player("steve", "X");
 const playerTwo = new Player("tony", "O");
@@ -16,4 +21,5 @@ const Gameboard = (function () {
   ];
 })();
 console.log(Gameboard);
+
 //Game object
