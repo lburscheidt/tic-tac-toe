@@ -5,8 +5,9 @@ function Player(name, marker) {
   this.marker = marker;
   this.move = function (position) {
     console.clear();
-    Gameboard[position] = marker;
+    Gameboard[position - 1] = marker;
     console.log(Gameboard);
+    screenBoard();
   };
 }
 
@@ -25,13 +26,17 @@ const Gameboard = (function () {
 
 console.table(Gameboard);
 
-const screenBoard = Gameboard.map((element) => {
+function screenBoard() {
   let board = document.querySelector(".board");
-  let square = document.createElement("div");
-  square.innerText = element;
-  board.appendChild(square);
-});
+  board.innerHTML = "";
+  Gameboard.map((element) => {
+    let square = document.createElement("div");
+    square.innerText = element;
+    board.appendChild(square);
+  });
+}
 
+screenBoard();
 const playGame = (function () {
   let g = Gameboard;
   const _1 = g[0];
@@ -91,10 +96,7 @@ const playGame = (function () {
   let currentPlayer = playerOne;
 
   window.addEventListener("click", function () {
-    currentPlayer.move(
-      prompt(`${currentPlayer.name}, please select x`),
-      prompt(`${currentPlayer.name}, please select y`),
-    );
+    currentPlayer.move(prompt(`${currentPlayer.name}, please select x`));
     console.log(Gameboard);
     if (hasWon()) {
       alert(hasWon());
