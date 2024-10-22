@@ -2,7 +2,7 @@
 let board = document.querySelector(".board");
 
 //Gameboard object
-const Gameboard = (function () {
+let Gameboard = (function () {
   let gameboard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return gameboard;
 })();
@@ -36,27 +36,35 @@ function Player(name, marker) {
   };
 }
 
+let startBtn = document.querySelector("#start");
+startBtn.addEventListener("click", function () {
+  Gameboard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  console.table(Gameboard);
+  screenBoard();
+});
+
 const playGame = (function () {
   let playerOneBtn = document.querySelector("#player-one-btn");
-
   let playerTwoBtn = document.querySelector("#player-two-btn");
 
   playerOneBtn.addEventListener("click", function () {
     let input = document.querySelector("#player-one").value;
     localStorage.setItem("player-one", input);
+    document.querySelector("#player-one").value = "";
+    document.querySelector("#player-one-name").textContent = input;
+  });
+
+  playerTwoBtn.addEventListener("click", function () {
+    let input = document.querySelector("#player-two").value;
+    localStorage.setItem("player-two", input);
+    document.querySelector("#player-two").value = "";
+    document.querySelector("#player-two-name").textContent = input;
   });
 
   let playerOneName = localStorage.getItem("player-one");
-
-  playerTwoBtn.addEventListener("click", function () {
-    let input = document.querySelector("#player-one").value;
-    localStorage.setItem("player-two", input);
-  });
-
   let playerTwoName = localStorage.getItem("player-two");
 
   const playerOne = new Player(playerOneName, "X");
-
   const playerTwo = new Player(playerTwoName, "O");
 
   const hasWon = function () {
