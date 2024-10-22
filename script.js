@@ -23,10 +23,10 @@ window.addEventListener("load", function (){ console.table(Gameboard); screenBoa
 function Player(name, marker) {
   this.name = name;
   this.marker = marker;
-this.move = function (position) {
+  this.move = function (position) {
   console.clear(); 
-Gameboard[position - 1] = marker;
- console.log(Gameboard)
+  Gameboard[position - 1] = marker;
+  console.log(Gameboard)
   screenBoard();
   };}
 
@@ -59,8 +59,9 @@ let m = currentPlayer.marker;
       (_9 === m && _5 === m && _1 === m) ||
       (_7 === m && _5 === m && _3 === m)
     ) {
-      alert(`${currentPlayer.name} has won!`);
-      return true;
+
+     return true;
+      
     } else {
       return false;
     }
@@ -97,29 +98,28 @@ let m = currentPlayer.marker;
       (_1 === m && _3 === m && _5 === m && _6 === m && _8 === m) ||
       (_3 === m && _4 === m && _5 === m && _8 === m && _9 === m)
     ) {
-      alert(`It's a draw!`);
       return true;
     } else {
       return false;
     }
   };
+function winAlert()
+{alert(`${currentPlayer.name} has won!`)}
 
+function drawAlert(){alert(`It's a draw.`)}
 
-  let currentPlayer = playerOne;
-
+let currentPlayer = playerOne;
   board.addEventListener("click", (e) => {currentPlayer.move(e.target.id);
-    if (hasWon()) {
-      alert(hasWon());
 
+    if (hasWon()) {
+setTimeout(winAlert, 200)
     }
-     if (isDraw()) {
-      alert(isDraw());
+     else if (isDraw()) {
+      setTimeout(drawAlert, 500)
     } else {
       if (currentPlayer == playerOne) {
         currentPlayer = playerTwo;
       } else {
         currentPlayer = playerOne;}}})
 
-});
-
-playGame();
+})();
