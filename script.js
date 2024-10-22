@@ -21,24 +21,24 @@ const Gameboard = (function () {
     [1, 2, 3],
   ];
 })();
-console.log(Gameboard);
+
+console.table(Gameboard);
 
 //Game object
 
 const playGame = (function () {
+  let g = Gameboard;
+  const _7 = g[0][0];
+  const _8 = g[0][1];
+  const _9 = g[0][2];
+  const _6 = g[1][0];
+  const _5 = g[1][1];
+  const _4 = g[1][2];
+  const _3 = g[2][0];
+  const _2 = g[2][1];
+  const _1 = g[2][2];
   const hasWon = function () {
-    let g = Gameboard;
     let m = currentPlayer.marker;
-    const _7 = g[0][0];
-    const _8 = g[0][1];
-    const _9 = g[0][2];
-    const _6 = g[1][0];
-    const _5 = g[1][1];
-    const _4 = g[1][2];
-    const _3 = g[2][0];
-    const _2 = g[2][1];
-    const _1 = g[2][2];
-
     if (
       (_9 === m && _8 === m && _7 === m) ||
       (_6 === m && _5 === m && _4 === m) ||
@@ -57,17 +57,7 @@ const playGame = (function () {
   };
 
   const isDraw = function () {
-    let g = Gameboard;
     let m = currentPlayer.marker;
-    let _7 = g[0][0];
-    let _8 = g[0][1];
-    let _9 = g[0][2];
-    let _6 = g[1][0];
-    let _5 = g[1][1];
-    let _4 = g[1][2];
-    let _3 = g[2][0];
-    let _2 = g[2][1];
-    let _1 = g[2][2];
     if (
       (_2 === m && _4 === m && _6 === m && _7 === m && _9 === m) ||
       (_1 === m && _2 === m && _6 === m && _7 === m && _8 === m) ||
