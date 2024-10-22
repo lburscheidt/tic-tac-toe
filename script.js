@@ -25,14 +25,14 @@ function Player(name, marker) {
   this.marker = marker;
   this.move = function (position) {
   console.clear(); 
-  Gameboard[position - 1] = marker;
-  console.log(Gameboard)
+if(Gameboard[position - 1] !== "X" &&Gameboard[position - 1] !== "O" ){  Gameboard[position - 1] = marker};
+  console.log(Gameboard);
   screenBoard();
   };}
 
 
 const playerOne = new Player("steve", "X");
-const playerTwo = new Player("tony", "O");
+const playerTwo = new Player("tony","O");
 
 const playGame = (function () {
 
