@@ -3,9 +3,9 @@
 function Player(name, marker) {
   this.name = name;
   this.marker = marker;
-  this.move = function (x, y) {
+  this.move = function (position) {
     console.clear();
-    Gameboard[x][y] = marker;
+    Gameboard[position] = marker;
     console.log(Gameboard);
   };
 }
@@ -15,28 +15,34 @@ const playerTwo = new Player("tony", "O");
 
 //Gameboard object
 const Gameboard = (function () {
-  return [
-    [7, 8, 9],
-    [4, 5, 6],
-    [1, 2, 3],
-  ];
+  //  return [
+  //    [7, 8, 9],
+  //    [4, 5, 6],
+  //    [1, 2, 3],
+  //  ];
+  return [7, 8, 9, 4, 5, 6, 1, 2, 3];
 })();
 
 console.table(Gameboard);
 
-//Game object
+const screenBoard = Gameboard.map((element) => {
+  let board = document.querySelector(".board");
+  let square = document.createElement("div");
+  square.innerText = element;
+  board.appendChild(square);
+});
 
 const playGame = (function () {
   let g = Gameboard;
-  const _7 = g[0][0];
-  const _8 = g[0][1];
-  const _9 = g[0][2];
-  const _6 = g[1][0];
-  const _5 = g[1][1];
-  const _4 = g[1][2];
-  const _3 = g[2][0];
-  const _2 = g[2][1];
-  const _1 = g[2][2];
+  const _7 = g[0];
+  const _8 = g[1];
+  const _9 = g[2];
+  const _6 = g[5];
+  const _5 = g[4];
+  const _4 = g[3];
+  const _3 = g[8];
+  const _2 = g[7];
+  const _1 = g[6];
   const hasWon = function () {
     let m = currentPlayer.marker;
     if (
