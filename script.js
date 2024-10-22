@@ -20,7 +20,7 @@ const Gameboard = (function () {
   //    [4, 5, 6],
   //    [1, 2, 3],
   //  ];
-  return [7, 8, 9, 4, 5, 6, 1, 2, 3];
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9];
 })();
 
 console.table(Gameboard);
@@ -34,15 +34,15 @@ const screenBoard = Gameboard.map((element) => {
 
 const playGame = (function () {
   let g = Gameboard;
-  const _7 = g[0];
-  const _8 = g[1];
-  const _9 = g[2];
-  const _6 = g[5];
-  const _5 = g[4];
+  const _1 = g[0];
+  const _2 = g[1];
+  const _3 = g[2];
   const _4 = g[3];
-  const _3 = g[8];
-  const _2 = g[7];
-  const _1 = g[6];
+  const _5 = g[4];
+  const _6 = g[5];
+  const _7 = g[6];
+  const _8 = g[7];
+  const _9 = g[8];
   const hasWon = function () {
     let m = currentPlayer.marker;
     if (
