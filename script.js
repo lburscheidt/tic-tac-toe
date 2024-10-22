@@ -25,13 +25,13 @@ const Gameboard = (function () {
 })();
 
 console.table(Gameboard);
-
+let board = document.querySelector(".board");
 function screenBoard() {
-  let board = document.querySelector(".board");
   board.innerHTML = "";
   Gameboard.map((element) => {
     let square = document.createElement("div");
     square.innerText = element;
+    square.id = element;
     board.appendChild(square);
   });
 }
@@ -95,8 +95,9 @@ const playGame = (function () {
   };
   let currentPlayer = playerOne;
 
-  window.addEventListener("click", function () {
-    currentPlayer.move(prompt(`${currentPlayer.name}, please select x`));
+  board.addEventListener("click", (e) => {
+    let field = e.target;
+    field.textContent = currentPlayer.marker;
     console.log(Gameboard);
     if (hasWon()) {
       alert(hasWon());
@@ -111,4 +112,21 @@ const playGame = (function () {
       }
     }
   });
+  //
+  //  window.addEventListener("click", function () {
+  //    currentPlayer.move(prompt(`${currentPlayer.name}, please select x`));
+  //    console.log(Gameboard);
+  //    if (hasWon()) {
+  //      alert(hasWon());
+  //    }
+  //    if (isDraw()) {
+  //      alert(isDraw());
+  //    } else {
+  //      if (currentPlayer == playerOne) {
+  //        currentPlayer = playerTwo;
+  //      } else {
+  //        currentPlayer = playerOne;
+  //      }
+  //    }
+  //  });
 })();
