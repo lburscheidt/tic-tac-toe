@@ -3,7 +3,7 @@ let board = document.querySelector(".board");
 
 //Gameboard object
 let Gameboard = (function () {
-  let gameboard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let gameboard = [1,2,3,4,5,6,7,8,9];
   return gameboard;
 })();
 
@@ -11,7 +11,7 @@ function screenBoard() {
   board.innerHTML = "";
   Gameboard.map((element) => {
     let square = document.createElement("div");
-    square.innerText = element;
+    square.textContent = element;
     square.id = element;
     board.appendChild(square);
   });
@@ -38,7 +38,7 @@ function Player(name, marker) {
 
 let startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", function () {
-  Gameboard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  Gameboard = [1,2,3,4,5,6,7,8,9];
   console.table(Gameboard);
   screenBoard();
 });
@@ -52,6 +52,7 @@ const playGame = (function () {
     localStorage.setItem("player-one", input);
     document.querySelector("#player-one").value = "";
     document.querySelector("#player-one-name").textContent = input;
+
   });
 
   playerTwoBtn.addEventListener("click", function () {
@@ -59,13 +60,16 @@ const playGame = (function () {
     localStorage.setItem("player-two", input);
     document.querySelector("#player-two").value = "";
     document.querySelector("#player-two-name").textContent = input;
+
   });
 
   let playerOneName = localStorage.getItem("player-one");
   let playerTwoName = localStorage.getItem("player-two");
 
+
   const playerOne = new Player(playerOneName, "X");
   const playerTwo = new Player(playerTwoName, "O");
+
 
   const hasWon = function () {
     let g = Gameboard;
@@ -133,6 +137,7 @@ const playGame = (function () {
     }
   };
   function winAlert() {
+console.log(`${currentPlayer.name}`);
     alert(`${currentPlayer.name} has won!`);
   }
 
